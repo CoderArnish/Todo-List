@@ -44,6 +44,17 @@ function App() {
     localStorage.setItem("todos",JSON.stringify(todos));
   }, [todos])
 
+  const setUpdate=(updatedTitle, id)=>{
+    setTodos(
+      todos.map((todo=>{
+        if(todo.sno==id){
+          todo.task=updatedTitle;
+        }
+        return todo
+      }))
+    )
+  };
+
   return (
     <div className="App">
       <div className='h-screen bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 overflow-x-hidden'>  
@@ -51,7 +62,7 @@ function App() {
         <div className='flex h-10 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-20'>
           <div className='my-20 sm:mt-10 mx-auto space-y-3 bg-white'>
             <Form addTask={addTask}/>
-            <Todo todos={todos} deleteTask={deleteTask}/>
+            <Todo todos={todos} deleteTask={deleteTask} setUpdate={setUpdate}/>
           </div>
         </div>
       </div>
