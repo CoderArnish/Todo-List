@@ -8,6 +8,7 @@ import { useState,useEffect } from "react";
 
 
 function App() {
+  document.title="Todo-List"
   let initTodo;
   if(localStorage.getItem("todos")==null){
     initTodo=[];
